@@ -2,18 +2,13 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 export const Wrap = styled.div`
-  position: relative;
-  
-  padding: 10px;
-  width: 100%;
-  border: 1px solid #808080;
-  border-radius: 6px;
+  position: absolute;
+  bottom: 0;
+  right: 20px;
 `;
 
 export const List = styled.ul`
-  position: absolute;
-  bottom: 0;
-  right: 0;
+
   display: flex;
   
   @media screen and (max-width: 450px) {

@@ -1,10 +1,16 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch} from 'react-redux';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { selectName} from 'redux/auth/authSelectors';
 import { login } from 'redux/auth/authOperations';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+Notify.init({ position: 'right-top', width: '300px', fontSize: '20px' });
 
 export const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  // const name = useSelector(selectName);
+  // const token = useSelector(selectToken);
   const dispatch = useDispatch();
 
   const handleInput = ({ target: { name, value } }) => {
@@ -23,7 +29,7 @@ export const LoginPage = () => {
   const handleSubmit = e => {
     e.preventDefault();
     dispatch(login({ email, password }));
-
+    // Notify.success(`Welcome ${name}, you have successfully authenticated.`);
     setEmail('');
     setPassword('');
   };

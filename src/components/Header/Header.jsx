@@ -1,3 +1,4 @@
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { selectToken } from 'redux/auth/authSelectors';
 import { Container } from 'components/Container/Container';
@@ -12,8 +13,8 @@ export const Header = () => {
 
     <header>
       <Container>
-        <Navigation />
-        {token ? <UserMenu /> : <AuthMenu />}
+          <Navigation />
+          {token ? <UserMenu /> : <AuthMenu />}
       </Container>
     </header>
   );

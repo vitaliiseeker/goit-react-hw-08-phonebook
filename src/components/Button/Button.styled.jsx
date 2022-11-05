@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Btn = styled.button`
   display: inline-block;
-  margin-right: 10px;;
+  margin-right: 10px;
   padding: 4px 8px;
   max-width: 200px;
 

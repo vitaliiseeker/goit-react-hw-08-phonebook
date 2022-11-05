@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectContacts,
   selectFilteredContacts,
 } from 'redux/contacts/contactsSelectors';
-import {  deleteContact } from 'redux/contacts/contactsOperations';
+import { deleteContact } from 'redux/contacts/contactsOperations';
 import { Button } from 'components/Button/Button';
 import { TotalNumberContacts } from 'components/TotalNumberContacts/TotalNumberContacts';
 import { Filter } from 'components/Filter/Filter';
@@ -19,19 +19,31 @@ import {
   IconSvgLink,
 } from './ContactList.styled';
 import PropTypes from 'prop-types';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+Notify.init({ position: 'right-top', width: '300px', fontSize: '20px' });
 
 export const ContactList = ({ changeContact }) => {
   const contacts = useSelector(selectContacts);
   const filteredContacts = useSelector(selectFilteredContacts);
+  const [currentContactId, setCurrentContactId] = useState(null);
   const dispatch = useDispatch();
 
   const editContact = contactId => {
-    const contact = contacts.find(({ id }) => id === contactId);
-    changeContact(contact);
+    changeContact(getContact(contactId));
+    setCurrentContactId(contactId);
   }
 
   const delContact = contactId => {
+    Notify.info(`The contact ${getContact(contactId).name} successfully deleted from the phone book.`);
     dispatch(deleteContact(contactId));
+    if (contactId === currentContactId) {
+      changeContact({ name: "", number: "" });
+      setCurrentContactId(null);
+    }
+  }
+
+  const getContact = contactId => {
+    return contacts.find(({ id }) => id === contactId);
   }
 
   return (

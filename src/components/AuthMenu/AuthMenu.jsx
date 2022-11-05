@@ -2,13 +2,13 @@ import {
   Wrap,
   List,
   Item,
-  Avatarstyled,
   LinkNav,
 } from './AuthMenu.styled';
 
 export const AuthMenu = () => {
 
   return (
+    <Wrap>
       <List>
         <Item>
           <LinkNav to="login">LOGIN</LinkNav>
@@ -17,5 +17,6 @@ export const AuthMenu = () => {
           <LinkNav to="register">REGISTER</LinkNav>
         </Item>
       </List>
+      </Wrap>
   );
 };

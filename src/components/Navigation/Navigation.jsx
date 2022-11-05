@@ -16,9 +16,9 @@ export const Navigation = () => {
             <Item>
               <LinkNav to="contacts">Phonebook</LinkNav>
             </Item>)}
-          <Item>
+          {/* <Item>
             <LinkNav to="about">About</LinkNav>
-          </Item>
+          </Item> */}
         </List>
       </Nav>
     </>

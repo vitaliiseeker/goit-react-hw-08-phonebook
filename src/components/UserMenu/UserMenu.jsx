@@ -1,6 +1,13 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from 'redux/auth/authOperations';
 import { selectName } from 'redux/auth/authSelectors';
+import {
+  Wrap,
+  Inner,
+  Text,
+  Name,
+  BtnLogout,
+} from './UserMenu.styled';
 
 export const UserMenu = () => {
   const name = useSelector(selectName);
@@ -11,11 +18,19 @@ export const UserMenu = () => {
   };
 
   return (
-    <div>
-      <p>Welcome, {name}</p>
-      <button type="button" onClick={handleClick}>
+
+    <Wrap>
+      <Inner>
+        <Text>
+          welcome
+        </Text>
+        <Name>{`${name}`}</Name>
+      </Inner>
+      <BtnLogout
+        type="button"
+        onClick={handleClick}>
         Logout
-      </button>
-    </div>
+      </BtnLogout>
+    </Wrap>
   );
 };

@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { fetchCurrentUser } from "redux/auth/authOperations";
 // import { selectToken } from 'redux/auth/authSelectors';
 // import { fetchContacts } from "redux/contacts/contactsOperations";
@@ -9,7 +9,7 @@ import { HomePage } from "pages/HomePage/HomePage";
 import { LoginPage } from "pages/LoginPage/LoginPage";
 import { RegisterPage } from "pages/RegisterPage/RegisterPage";
 import { PhonebookPage } from "pages/PhonebookPage/PhonebookPage";
-import { AboutPage } from "pages/AboutPage/AboutPage";
+// import { AboutPage } from "pages/AboutPage/AboutPage";
 import { PublicRoute } from 'HOCs/PublicRoute';
 import { PrivateRoute } from 'HOCs/PrivateRoute';
 
@@ -57,13 +57,13 @@ export const App = () => {
                 <PhonebookPage />
               </PrivateRoute>}
           />
-          <Route
+          {/* <Route
             path="about"
             element={
               <PublicRoute>
                 <AboutPage />
               </PublicRoute>}
-          />
+          /> */}
         </Route>
         <Route
           path="*"

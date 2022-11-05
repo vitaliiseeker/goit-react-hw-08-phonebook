@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectContacts, selectError} from 'redux/contacts/contactsSelectors';
+import { selectContacts, selectError } from 'redux/contacts/contactsSelectors';
 import { addContact, updateContact } from 'redux/contacts/contactsOperations';
 import { Button } from 'components/Button/Button';
 import { Notification } from "components/Notification/Notification";
 import PropTypes from 'prop-types';
-
 import { nanoid } from "nanoid";
 import { Form, Label, Input } from "./ContactForm.styled"
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+Notify.init({ position: 'right-top', width: '300px', fontSize: '20px' });
 
 export const ContactForm = ({ contact, closeUpdateForm }) => {
 
@@ -54,21 +55,22 @@ export const ContactForm = ({ contact, closeUpdateForm }) => {
       number,
     };
 
-    if (isUpdateForm) {
-      dispatch(updateContact( currentContact ));
-      closeUpdateForm();
-      reset();
-      return;
-    }
-
     const normalizedName = name.toLowerCase();
 
     if (contacts.find(contact => contact.name.toLowerCase() === normalizedName)) {
-      alert(`${name} is already in contacts.`);
+      Notify.failure(`${name} is already in contacts!`);
       return;
     }
 
-    dispatch(addContact(currentContact));
+    if (isUpdateForm) {
+      dispatch(updateContact(currentContact));
+      Notify.info(`The contact ${name} successfully updated.`);
+      closeUpdateForm();
+    } else {
+      dispatch(addContact(currentContact));
+      Notify.success(`The contact ${name} has been successfully added to the phone book.`);
+    }
+
     reset();
   };
 
@@ -85,7 +87,7 @@ export const ContactForm = ({ contact, closeUpdateForm }) => {
   return (
     <>
       {error && <Notification message={error} />}
-      {!error && 
+      {!error &&
         <Form onSubmit={handleSubmit}>
           <h3>{isUpdateForm ? "Edit contact" : "Create contact"}</h3>
           <Label htmlFor={nameInputId}>Name</Label>

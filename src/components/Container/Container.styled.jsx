@@ -1,13 +1,23 @@
 import styled from 'styled-components';
 
 export const Div = styled.div`
-display: flex;
-flex-direction: column;
+  position: relative;
 
-margin-left: auto;
-margin-right: auto;
-padding: 20px;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  min-width: 320px;
+  width: 100%;
 
-max-width: 1200px;
-height: 100vh;
-`
+@media screen and (min-width: 480px) {
+  width: 480px;
+}
+
+@media screen and (min-width: 768px){
+  width: 768px;
+}
+
+@media screen and (min-width: 1200px) {
+  width: 1200px;
+}
+`; 

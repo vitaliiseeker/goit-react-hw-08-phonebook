@@ -1,4 +1,5 @@
 import { Wrap, Text } from "./AboutPage.styled";
+
 export const AboutPage = () => {
 
   return (

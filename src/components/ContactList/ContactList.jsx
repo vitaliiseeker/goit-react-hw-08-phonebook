@@ -4,7 +4,7 @@ import {
   selectContacts,
   selectFilteredContacts,
 } from 'redux/contacts/contactsSelectors';
-import { deleteContact } from 'redux/contacts/contactsOperations';
+import {  deleteContact } from 'redux/contacts/contactsOperations';
 import { Button } from 'components/Button/Button';
 import { TotalNumberContacts } from 'components/TotalNumberContacts/TotalNumberContacts';
 import { Filter } from 'components/Filter/Filter';
@@ -23,7 +23,6 @@ import PropTypes from 'prop-types';
 export const ContactList = ({ changeContact }) => {
   const contacts = useSelector(selectContacts);
   const filteredContacts = useSelector(selectFilteredContacts);
-
   const dispatch = useDispatch();
 
   const editContact = contactId => {
@@ -45,7 +44,7 @@ export const ContactList = ({ changeContact }) => {
           <h3>Sorry, no contacts were found for your search.</h3>
         )}
         <ul>
-          {filteredContacts.map(({ id, name, phone: number }) => (
+          {filteredContacts.map(({ id, name, number }) => (
             <Item key={id}>
               <Inner>
                 <Avatarstyled round={true} size={25} name={name} />
@@ -67,8 +66,6 @@ export const ContactList = ({ changeContact }) => {
                   children="Delete"
                 />
               </Inner>
-              {/* {contactToUpdate && contactToUpdate.id === id && (
-                <UpdateContactForm user={contactToUpdate} closeForm={closeForm} /> )}*/}
             </Item>
           ))}
         </ul>

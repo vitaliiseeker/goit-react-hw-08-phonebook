@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectContacts, selectError, selectIsLoading } from 'redux/contacts/contactsSelectors';
+import { selectContacts, selectError} from 'redux/contacts/contactsSelectors';
 import { addContact, updateContact } from 'redux/contacts/contactsOperations';
 import { Button } from 'components/Button/Button';
 import { Notification } from "components/Notification/Notification";
-import { Loader } from "components/Loader/Loader";
 import PropTypes from 'prop-types';
 
 import { nanoid } from "nanoid";
@@ -13,12 +12,11 @@ import { Form, Label, Input } from "./ContactForm.styled"
 export const ContactForm = ({ contact, closeUpdateForm }) => {
 
   const [name, setName] = useState(contact?.name ?? "");
-  const [number, setNumber] = useState(contact?.phone ?? "");
-  const [contactId, setContactId] = useState(contact?.id ?? nanoid());
+  const [number, setNumber] = useState(contact?.number ?? "");
+  const [contactId, setContactId] = useState(contact?.id ?? "");
 
   const contacts = useSelector(selectContacts);
   const error = useSelector(selectError);
-  const isLoading = useSelector(selectIsLoading);
 
   const dispatch = useDispatch();
   const nameInputId = nanoid();
@@ -28,7 +26,7 @@ export const ContactForm = ({ contact, closeUpdateForm }) => {
 
   useEffect(() => {
     setName(contact?.name);
-    setNumber(contact?.phone);
+    setNumber(contact?.number);
     setContactId(contact?.id);
   }, [contact]);
 
@@ -53,11 +51,11 @@ export const ContactForm = ({ contact, closeUpdateForm }) => {
     const currentContact = {
       id: contactId,
       name,
-      phone: number,
+      number,
     };
 
     if (isUpdateForm) {
-      dispatch(updateContact(currentContact));
+      dispatch(updateContact( currentContact ));
       closeUpdateForm();
       reset();
       return;
@@ -87,8 +85,7 @@ export const ContactForm = ({ contact, closeUpdateForm }) => {
   return (
     <>
       {error && <Notification message={error} />}
-      {isLoading && <Loader />}
-      {!error && !isLoading &&
+      {!error && 
         <Form onSubmit={handleSubmit}>
           <h3>{isUpdateForm ? "Edit contact" : "Create contact"}</h3>
           <Label htmlFor={nameInputId}>Name</Label>

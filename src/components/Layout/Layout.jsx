@@ -1,38 +1,55 @@
-import { Suspense } from "react";
-import { Outlet, NavLink } from 'react-router-dom';
+import React, { useState, Suspense } from "react";
+import { Outlet } from 'react-router-dom';
+import { useMedia } from 'react-use';
 import { Container } from "components/Container/Container";
+import { Header } from "components/Header/Header";
+import { Button } from "components/Button/Button";
+import { Footer } from "components/Footer/Footer";
 import { Loader } from "components/Loader/Loader";
-import { Nav, List, Item, LinkNav, Footer, GithubLogo, Wrap } from './Layout.styled';
+import { MobileMenu } from "components/MobileMenu/MobileMenu";
 
 export const Layout = () => {
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const isMobile = useMedia('(max-width: 767px)');
+
+  const openMobileMenu = () => {
+    setIsModalOpen(true);
+  };
+  const closeMobileMenu = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <>
-      <Container>
-        <Nav>
-          <List>
-            <Item>
-              <LinkNav to="/" end>Phonebook</LinkNav>
-            </Item>
-            <Item>
-              <LinkNav to="about">About</LinkNav>
-            </Item>
-          </List>
-          <NavLink
-            href="https://github.com/vitaliiseeker/goit-react-hw-06-phonebook/"
-            target="_blank"
-            rel="noopener nofollow noreferrer">
-            <GithubLogo width="50" height="50" />
-          </NavLink>
-        </Nav>
-        <Wrap>
-          <Suspense fallback={<Loader />}>
-            <Outlet />
-          </Suspense>
-        </Wrap>
-        <Footer>
-          <p>&copy; 2022 | All Rights Reserved ⚡️</p>
-        </Footer>
-      </Container>
+      <div style={{ flexGrow: 1 }}>
+        
+        {isMobile ? (
+          <Button
+            type="button"
+            children="MENU"
+            onClick={openMobileMenu}
+          />
+        ) : (
+          <Header />
+        )}
+
+        {isModalOpen && isMobile &&
+          <MobileMenu
+            closeMenu={closeMobileMenu}
+          />}
+
+        <main>
+          <Container>
+            <Suspense fallback={<Loader />}>
+              <Outlet />
+            </Suspense>
+          </Container>
+        </main>
+        
+      </div>
+
+      <Footer />
     </>
   );
 };

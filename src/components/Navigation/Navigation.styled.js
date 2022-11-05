@@ -5,7 +5,6 @@ export const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-right: 20px;
   border-bottom: 3px solid #c0c0c0;
 `
 export const List = styled.ul`
@@ -52,19 +51,15 @@ export const LinkNav = styled(NavLink)`
     transform: scaleX(0);
     transition: transform var(--animation);
   }
-  }
+}
 
   &.active,
   &:hover  {
     color: #0000ff;
 
-    &::after {
-      transform: scaleX(1);
+  &::after {
+    transform: scaleX(1);
     }
-}
+  }
 `;
 
-export const Wrap = styled.div`
-  flex-grow: 1;
-  border-radius: 10px;
-`;

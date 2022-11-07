@@ -3,40 +3,38 @@ import { NavLink } from 'react-router-dom';
 
 export const Wrap = styled.div`
   position: absolute;
-  /* top: 0; */
   right: 20px;
-
-  @media screen and (min-width: 768px) {
-    bottom: 0;
-}
+  top: 8px;
 `;
 
 export const List = styled.ul`
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  /* flex-direction: row; */
+  gap: 10px;
   padding: 8px 15px;
+  font-size: 22px;
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 480px) {
   flex-direction: row;
   gap: 20px;
   padding: 12px 25px;
+  font-size: 32px;
 }
 `
 export const Item = styled.li`
   position: relative;
   list-style: none;
 `
-
 export const LinkNav = styled(NavLink)`
-  font-size: 32px;
+  /* font-size: 32px; */
   font-weight: 600;
   text-decoration: none;
   
   transition: color var(--animation);
   
 @media screen and (min-width: 768px) {
-  font-size: 26px;
+  /* font-size: 26px; */
   
   &::after {
     content: '';

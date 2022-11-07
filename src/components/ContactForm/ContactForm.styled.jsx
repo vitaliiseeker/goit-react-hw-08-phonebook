@@ -19,5 +19,12 @@ font-size: 16px;
 export const Input = styled.input`
 padding: 4px;
 font-size: 16px;
-/* max-width: 250px; */
+max-width: 250px;
+
+  @media screen and (min-width: 768px) { 
+    max-width: none;
+
+  }
+
+
 `;

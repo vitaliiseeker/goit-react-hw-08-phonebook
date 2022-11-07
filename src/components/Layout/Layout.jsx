@@ -5,8 +5,8 @@ import { Container } from "components/Container/Container";
 import { Header } from "components/Header/Header";
 import { Footer } from "components/Footer/Footer";
 import { MobileMenu } from "components/MobileMenu/MobileMenu";
-import { IconButton } from "components/IconButton/IconButton";
-import { ReactComponent as IconMenu } from "images/icon-menu.svg";
+// import { IconButton } from "components/IconButton/IconButton";
+// import { ReactComponent as IconMenu } from "images/icon-menu.svg";
 import { Modal } from "components/Modal/Modal";
 
 export const Layout = () => {
@@ -14,9 +14,10 @@ export const Layout = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const isMobile = useMedia('(max-width: 767px)');
 
-  const openMobileMenu = () => {
-    setIsModalOpen(true);
-  };
+  // const openMobileMenu = () => {
+  //   setIsModalOpen(true);
+  // };
+
   const closeMobileMenu = () => {
     setIsModalOpen(false);
   };
@@ -26,7 +27,7 @@ export const Layout = () => {
       <div style={{ flexGrow: 1 }}>
 
         <Container>
-          {isMobile ? (
+          {/*{isMobile ? (
             <IconButton
               type="button"
               onClick={openMobileMenu}>
@@ -34,8 +35,9 @@ export const Layout = () => {
             </IconButton>
           ) : (
             <Header />
-          )}
+          )} */}
 
+            <Header />
           {isModalOpen && isMobile &&
             <Modal>
               <MobileMenu

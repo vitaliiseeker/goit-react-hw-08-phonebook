@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ReactComponent as IconSvg } from "../../images/iconPhone.svg";
+import { ReactComponent as IconPhone } from "../../images/icon-phone.svg";
 import Avatar from "react-avatar";
 
 export const Wrap = styled.div`
@@ -8,6 +8,10 @@ export const Wrap = styled.div`
   width: 100%;
   border: 1px solid #808080;
   border-radius: 6px;
+`;
+
+export const Title = styled.h2`
+  padding: 0 30px;
 `;
 
 export const Item = styled.li`
@@ -29,18 +33,40 @@ export const Item = styled.li`
   }
 `;
 
+export const BoxData = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  @media screen and (min-width: 768px) { 
+  flex-direction: row;
+  }
+`;
+
+export const BoxEdit = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5px;
+`;
+
 export const Inner = styled.div`
   display: flex;
-  align-items: center;
-  gap: 8px;
+  gap: 5px;
+
+  @media screen and (min-width: 768px) { 
+    flex-direction: row;
+    gap: 8px;
+  }
 `;
 
 export const Name = styled.span`
-/* width: 180px; */
+  width: 120px;
 `;
 
 export const Number = styled.span`
   margin-right: 15px;
+  width: 120px;
 `;
 
 export const Link = styled.a`
@@ -49,7 +75,7 @@ export const Link = styled.a`
   color: inherit;
 `;
 
-export const IconSvgLink = styled(IconSvg)`
+export const IconPhoneLink = styled(IconPhone)`
   fill: #2DC100;
   transition-property: transform, fill;
   transition: var(--animation);

@@ -1,12 +1,13 @@
-import React, { useState, Suspense } from "react";
+import React, { useState } from "react";
 import { Outlet } from 'react-router-dom';
 import { useMedia } from 'react-use';
 import { Container } from "components/Container/Container";
 import { Header } from "components/Header/Header";
-import { Button } from "components/Button/Button";
 import { Footer } from "components/Footer/Footer";
-import { Loader } from "components/Loader/Loader";
 import { MobileMenu } from "components/MobileMenu/MobileMenu";
+import { IconButton } from "components/IconButton/IconButton";
+import { ReactComponent as IconMenu } from "images/icon-menu.svg";
+import { Modal } from "components/Modal/Modal";
 
 export const Layout = () => {
 
@@ -23,30 +24,32 @@ export const Layout = () => {
   return (
     <>
       <div style={{ flexGrow: 1 }}>
-        
-        {isMobile ? (
-          <Button
-            type="button"
-            children="MENU"
-            onClick={openMobileMenu}
-          />
-        ) : (
-          <Header />
-        )}
 
-        {isModalOpen && isMobile &&
-          <MobileMenu
-            closeMenu={closeMobileMenu}
-          />}
+        <Container>
+          {isMobile ? (
+            <IconButton
+              type="button"
+              onClick={openMobileMenu}>
+              <IconMenu width="32" height="32" />
+            </IconButton>
+          ) : (
+            <Header />
+          )}
+
+          {isModalOpen && isMobile &&
+            <Modal>
+              <MobileMenu
+                closeMenu={closeMobileMenu} />
+            </Modal>}
+
+        </Container>
 
         <main>
           <Container>
-            <Suspense fallback={<Loader />}>
-              <Outlet />
-            </Suspense>
+            <Outlet />
           </Container>
         </main>
-        
+
       </div>
 
       <Footer />

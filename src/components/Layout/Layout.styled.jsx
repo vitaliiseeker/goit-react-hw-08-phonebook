@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import { IconButton } from "components/IconButton/IconButton";
 
 export const Nav = styled.nav`
   display: flex;
@@ -61,10 +62,25 @@ export const LinkNav = styled(NavLink)`
     &::after {
       transform: scaleX(1);
     }
-}
+  }
 `;
 
 export const Wrap = styled.div`
   flex-grow: 1;
   border-radius: 10px;
 `;
+
+// export const ButtonMenu = styled(IconButton)`
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   z-index: 200;
+
+//   padding: 10px;
+
+//   background-color: #8282ff;
+//   border-bottom-right-radius: 40%;
+
+// `;
+
+

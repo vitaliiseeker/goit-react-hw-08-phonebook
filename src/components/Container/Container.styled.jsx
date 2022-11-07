@@ -8,8 +8,9 @@ export const Div = styled.div`
   padding-right: 20px;
   min-width: 320px;
   width: 100%;
+  max-width: 1200px;
 
-@media screen and (min-width: 480px) {
+/* @media screen and (min-width: 480px) {
   width: 480px;
 }
 
@@ -19,5 +20,5 @@ export const Div = styled.div`
 
 @media screen and (min-width: 1200px) {
   width: 1200px;
-}
+} */
 `; 

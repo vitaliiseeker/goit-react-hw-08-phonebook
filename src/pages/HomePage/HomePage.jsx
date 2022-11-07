@@ -8,7 +8,9 @@ export const HomePage = () => {
   return (
     <>
       <Wrap>
+        
         <Welcome>We welcome you to our website!</Welcome>
+        
         <Text>This software product is the result of the final practical task of consolidating the theoretical knowledge acquired during educational the course "React Bootcamp Full Stack Developer"
           <LinkGoit
             href="https://goit.global/ua/courses/bootcamp/"
@@ -22,6 +24,7 @@ export const HomePage = () => {
               <LinkNav to="login" title="log in">registered</LinkNav>
             </>)}
         </Text>
+
       </Wrap>
     </>
 

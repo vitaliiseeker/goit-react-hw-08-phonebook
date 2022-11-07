@@ -2,10 +2,17 @@ import styled from 'styled-components';
 
 export const Wrap = styled.div`
   position: absolute;
-  bottom: 12px;
-  right: 40px;
+  /* bottom: 10px;  */
+  right: 20px;
+
   display: flex;
+  align-items: center;
   gap: 8px;
+
+   @media screen and (min-width: 767px) { 
+    /* top: 0; */
+    bottom: 10px;
+  }
 `;
 
 export const Inner = styled.div`
@@ -22,34 +29,26 @@ export const Name = styled.span`
   font-size: 16px;
   font-weight: 500;
   font-style: italic;
-
   color: #00009b;
-
 `;
 
 export const BtnLogout = styled.button`
-  
   display: inline-block;
-  padding: 4px 8px;
-  /* max-width: 200px; */
+  padding: 5px 10px;
 
-  font-size: inherit;
-  color: #000080;
-  background-color: #8080c0;
+  background-color: transparent;
+  border: none;
+  border-radius: 30%;
 
-  border: 1px solid #8080c0;
-  border-radius: 4px;
-
-  box-shadow: 0px 2px 4px #808080;
-  outline: none;
   cursor: pointer;
+  outline: none;
 
-  transition-property: color, background-color;
+  transition-property: fill, background-color;
   transition: var(--animation);
 
   &:hover,
   &:focus {
-    background-color: #0000ff;
-    color: #ffff00;
+    /* background-color: #0000ff; */
+    fill: #0000ff;
   }
 `;

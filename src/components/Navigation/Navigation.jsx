@@ -9,16 +9,16 @@ export const Navigation = () => {
     <>
       <Nav>
         <List>
+          
           <Item>
             <LinkNav to="/" end>Home</LinkNav>
           </Item>
+
           {token && (
             <Item>
-              <LinkNav to="contacts">Phonebook</LinkNav>
+              <LinkNav to="contacts">Contacts</LinkNav>
             </Item>)}
-          {/* <Item>
-            <LinkNav to="about">About</LinkNav>
-          </Item> */}
+          
         </List>
       </Nav>
     </>

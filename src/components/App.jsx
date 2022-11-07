@@ -8,7 +8,7 @@ import { Layout } from 'components/Layout/Layout';
 import { HomePage } from "pages/HomePage/HomePage";
 import { LoginPage } from "pages/LoginPage/LoginPage";
 import { RegisterPage } from "pages/RegisterPage/RegisterPage";
-import { PhonebookPage } from "pages/PhonebookPage/PhonebookPage";
+import { ContactsPage } from "pages/ContactsPage/ContactsPage";
 // import { AboutPage } from "pages/AboutPage/AboutPage";
 import { PublicRoute } from 'HOCs/PublicRoute';
 import { PrivateRoute } from 'HOCs/PrivateRoute';
@@ -23,7 +23,12 @@ export const App = () => {
   // }, [dispatch]);
 
   return (
-    <>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        height: '100vh',
+      }}>
       <Routes >
         <Route
           path="/"
@@ -54,7 +59,7 @@ export const App = () => {
             path="contacts"
             element={
               <PrivateRoute>
-                <PhonebookPage />
+                <ContactsPage />
               </PrivateRoute>}
           />
           {/* <Route
@@ -73,6 +78,6 @@ export const App = () => {
               replace />}
         />
       </Routes>
-    </>
+    </div>
   );
 }

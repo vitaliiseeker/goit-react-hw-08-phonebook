@@ -3,8 +3,8 @@ import { NavLink } from 'react-router-dom';
 
 export const Wrap = styled.div`
   position: absolute;
+  top: 10px;
   right: 20px;
-  top: 8px;
 `;
 
 export const List = styled.ul`
@@ -39,7 +39,7 @@ export const LinkNav = styled(NavLink)`
   &::after {
     content: '';
     position: absolute;
-    bottom: -12px;
+    bottom: -23px;
     right: 0;
     width: 100%;
     height: 3px;

@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectContacts, selectError } from 'redux/contacts/contactsSelectors';
+import { selectContacts} from 'redux/contacts/contactsSelectors';
 import { addContact, updateContact } from 'redux/contacts/contactsOperations';
 import { Button } from 'components/Button/Button';
-import { Notification } from "components/Notification/Notification";
 import PropTypes from 'prop-types';
 import { nanoid } from "nanoid";
 import { Form, Label, Input } from "./ContactForm.styled"
@@ -17,7 +16,7 @@ export const ContactForm = ({ contact, closeUpdateForm }) => {
   const [contactId, setContactId] = useState(contact?.id ?? "");
 
   const contacts = useSelector(selectContacts);
-  const error = useSelector(selectError);
+
 
   const dispatch = useDispatch();
   const nameInputId = nanoid();
@@ -57,7 +56,9 @@ export const ContactForm = ({ contact, closeUpdateForm }) => {
 
     const normalizedName = name.toLowerCase();
 
-    if (contacts.find(contact => contact.name.toLowerCase() === normalizedName)) {
+    if (contacts
+      .filter(contact => contact.name.toLowerCase() !== normalizedName)
+      .find(contact => contact.name.toLowerCase() === normalizedName)) {
       Notify.failure(`${name} is already in contacts!`);
       return;
     }
@@ -86,8 +87,6 @@ export const ContactForm = ({ contact, closeUpdateForm }) => {
 
   return (
     <>
-      {error && <Notification message={error} />}
-      {!error &&
         <Form onSubmit={handleSubmit}>
           <h3>{isUpdateForm ? "Edit contact" : "Create contact"}</h3>
           <Label htmlFor={nameInputId}>Name</Label>
@@ -116,7 +115,7 @@ export const ContactForm = ({ contact, closeUpdateForm }) => {
             required
           />
           
-          <div>
+          <div style={{ display: "flex", gap: 29 }}>
             <Button
               type="submit"
               children={
@@ -134,7 +133,7 @@ export const ContactForm = ({ contact, closeUpdateForm }) => {
             
           </div>
 
-        </Form>}
+        </Form>
     </>)
 }
 

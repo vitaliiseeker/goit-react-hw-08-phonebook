@@ -6,7 +6,7 @@ import { ContactForm } from "components/ContactForm/ContactForm";
 import { ContactList } from "components/ContactList/ContactList";
 import { Notification } from "components/Notification/Notification";
 import { Loader } from "components/Loader/Loader";
-import { Wrap} from "./ContactsPage.styled";
+import { Wrap } from "./ContactsPage.styled";
 
 export const ContactsPage = () => {
   const [contact, setContact] = useState(null);
@@ -29,20 +29,20 @@ export const ContactsPage = () => {
   return (
     <>
       {error && <Notification message={error} />}
-      {isLoading && <Loader />}
-      {!error &&
-        <Wrap>
-          
-          <ContactList
-            changeContact={changeContact}
-          />
+      {!error && 
+        <>
+          <Wrap>
+          {isLoading && <Loader />}
+            <ContactList
+              changeContact={changeContact}
+            />
 
-          <ContactForm
-            contact={contact}
-            closeUpdateForm={closeUpdateForm}
-          />
-          
-        </Wrap>}
+            <ContactForm
+              contact={contact}
+              closeUpdateForm={closeUpdateForm}
+            />
+          </Wrap>
+        </>}
     </>
 
   )

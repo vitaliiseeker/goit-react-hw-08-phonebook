@@ -2,15 +2,15 @@ import styled from 'styled-components';
 
 export const Wrap = styled.div`
   position: absolute;
-  bottom: 30px; 
+  top: 40px;
   right: 20px;
 
   display: flex;
   align-items: center;
   gap: 8px;
 
-   @media screen and (min-width: 768px) { 
-    bottom: 10px;
+  @media screen and (min-width: 480px) { 
+    top: 17px;
   }
 `;
 

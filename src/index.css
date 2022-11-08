@@ -45,12 +45,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-size: 16px;
 
-  background-image: linear-gradient(to bottom,
-      rgba(121, 134, 156, 0.6),
-      rgba(121, 134, 156, 0.6)),
+  background-color: rgba(121, 134, 156, 0.4);
+  /* background-image: linear-gradient(to bottom,
+      rgba(121, 134, 156, 0.4),
+      rgba(121, 134, 156, 0.4));
     url('./images/bg.jpg');
   background-position: center;
-  background-size: cover;
+  background-size: cover; */
 }
 
 code {

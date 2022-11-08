@@ -36,51 +36,50 @@ export const ContactList = ({ changeContact }) => {
 
   return (
     <>
-      <Wrap>
+        <Wrap>
 
-        <Title>Contacts</Title>
+          <Title>Contacts</Title>
+          <TotalNumberContacts value={contacts.length} />
+          {contacts.length > 0 && <Filter />}
+          {contacts.length > 0 && filteredContacts.length === 0 && (
+            <h3>Sorry, no contacts were found for your search.</h3>
+          )}
 
-        <TotalNumberContacts value={contacts.length} />
-        {contacts.length > 0 && <Filter />}
-        {contacts.length > 0 && filteredContacts.length === 0 && (
-          <h3>Sorry, no contacts were found for your search.</h3>
-        )}
+          <ul>
+            {filteredContacts.map(({ id, name, number }) => (
+              <Item key={id}>
 
-        <ul>
-          {filteredContacts.map(({ id, name, number }) => (
-            <Item key={id}>
+                <BoxData>
+                  <Inner>
+                    <Avatarstyled round={true} size={25} name={name} />
+                    <Name>{name}</Name>
+                  </Inner>
+                  <Inner>
+                    <Link href={'tel: ' + number} type="tel">
+                      <IconPhoneLink width="25" height="25" />
+                    </Link>
+                    <Number>{number}</Number>
+                  </Inner>
+                </BoxData>
 
-              <BoxData>
-                <Inner>
-                  <Avatarstyled round={true} size={25} name={name} />
-                  <Name>{name}</Name>
-                </Inner>
-                <Inner>
-                  <Link href={'tel: ' + number} type="tel">
-                    <IconPhoneLink width="25" height="25" />
-                  </Link>
-                  <Number>{number}</Number>
-                </Inner>
-              </BoxData>
+                <BoxEdit>
+                  <Button
+                    type="button"
+                    onClick={() => editContact(id)}
+                    children="Edit"
+                  />
+                  <Button
+                    type="button"
+                    onClick={() => delContact(id)}
+                    children="Delete"
+                  />
+                </BoxEdit>
 
-              <BoxEdit>
-                <Button
-                  type="button"
-                  onClick={() => editContact(id)}
-                  children="Edit"
-                />
-                <Button
-                  type="button"
-                  onClick={() => delContact(id)}
-                  children="Delete"
-                />
-              </BoxEdit>
+              </Item>
+            ))}
+          </ul>
 
-            </Item>
-          ))}
-        </ul>
-
-      </Wrap>
+        </Wrap>
     </>
   );
 };

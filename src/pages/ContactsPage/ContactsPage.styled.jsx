@@ -5,7 +5,7 @@ display: flex;
 flex-direction: column-reverse;
 gap: 10px;
 
-margin-top: 15px;
+margin: 15px 0;
 padding: 15px;
 border: 1px solid #808080;
 border-radius: 10px;

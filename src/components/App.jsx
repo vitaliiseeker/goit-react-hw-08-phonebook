@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect} from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { fetchCurrentUser } from "redux/auth/authOperations";
-// import { selectToken } from 'redux/auth/authSelectors';
+// import { selectToken, selectAuthError } from 'redux/auth/authSelectors';
 // import { fetchContacts } from "redux/contacts/contactsOperations";
 import { Layout } from 'components/Layout/Layout';
 import { HomePage } from "pages/HomePage/HomePage";
@@ -15,13 +15,13 @@ import { PrivateRoute } from 'HOCs/PrivateRoute';
 
 export const App = () => {
   const dispatch = useDispatch();
-  dispatch(fetchCurrentUser());
-  // const token = useSelector(selectToken);
 
-  // useEffect(() => {
-  //   if (token) dispatch(fetchContacts());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(fetchCurrentUser());
+  }, [dispatch]);
 
+  // const authError = useSelector(selectAuthError);
+  
   return (
     <div
       style={{
@@ -29,6 +29,7 @@ export const App = () => {
         flexDirection: 'column',
         height: '100vh',
       }}>
+
       <Routes >
         <Route
           path="/"

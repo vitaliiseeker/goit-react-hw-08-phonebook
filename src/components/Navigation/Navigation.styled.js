@@ -4,26 +4,30 @@ import { NavLink } from 'react-router-dom';
 export const Nav = styled.nav`
   display: flex;
   flex-direction: column;
-  padding: 8px 15px;
+  padding: 8px 15px 30px; 
   border-bottom: 3px solid #c0c0c0;
+
+  @media screen and (min-width: 480px) {
+  }
   
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 480px) {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     gap: 15px;
+    padding-bottom: 8px;
   }
 `;
 
 export const List = styled.ul`
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
   /* gap: 50px; */
   
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 480px) {
     flex-direction: row;;
-    /* gap: 25px; */
+    gap: 25px;
     padding: 12px 25px;
   }
 `;

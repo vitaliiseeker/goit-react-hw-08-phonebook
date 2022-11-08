@@ -1,9 +1,9 @@
 import { useSelector } from 'react-redux';
-import { selectToken } from 'redux/auth/authSelectors';
+import { selectIsLoggedIn } from 'redux/auth/authSelectors';
 import { Wrap, Welcome, Text, LinkGoit, LinkNav } from "./HomePage.styled";
 
 export const HomePage = () => {
-  const token = useSelector(selectToken);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
 
   return (
     <>
@@ -17,7 +17,7 @@ export const HomePage = () => {
             target="_blank"
             rel="noopener nofollow noreferrer">  IT School GoIT
           </LinkGoit><br />
-          {!token && (
+          {!isLoggedIn && (
             <>To use the program, you need to
               <LinkNav to="register" title="register">register</LinkNav> <br />
               If you are already

@@ -16,6 +16,7 @@ const authSlice = createSlice({
   extraReducers: {
     [register.pending]: state => {
       state.isLoading = true;
+      state.error = null;
     },
     [register.fulfilled]: (state, { payload: { user, token } }) => {
       state.user = user;
@@ -43,6 +44,7 @@ const authSlice = createSlice({
     },
     [logout.pending]: state => {
       state.isLoading = true;
+      state.error = null;
     },
     [logout.fulfilled]: state => {
       state.user = { name: '', email: '' };
@@ -52,10 +54,12 @@ const authSlice = createSlice({
     },
     [logout.rejected]: (state, { payload }) => {
       state.error = payload;
+      state.token = null;
       state.isLoading = false;
     },
     [fetchCurrentUser.pending]: state => {
       state.isLoading = true;
+      state.error = null;
       state.isFetchingCurrentUser = true;
     },
     [fetchCurrentUser.fulfilled]: (state, { payload }) => {
@@ -66,6 +70,7 @@ const authSlice = createSlice({
     },
     [fetchCurrentUser.rejected]: (state, { payload }) => {
       state.error = payload;
+      state.token = null;
       state.isFetchingCurrentUser = false;
       state.isLoading = false;
     },

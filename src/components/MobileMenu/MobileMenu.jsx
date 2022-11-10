@@ -20,9 +20,10 @@ export const MobileMenu = ({ closeMenu }) => {
       </IconButton>
 
       <Wrap>
-        <Navigation onClick={() => closeMenu()} />
-        {isLoggedIn ? <UserMenu onClick={() => closeMenu()} /> :
-          <AuthMenu onClick={() => closeMenu()} />}
+        <Navigation />
+        {isLoggedIn ?
+          <UserMenu /> :
+          <AuthMenu />}
       </Wrap>
     </>
   );

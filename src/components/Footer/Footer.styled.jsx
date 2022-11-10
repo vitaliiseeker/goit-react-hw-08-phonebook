@@ -21,7 +21,8 @@ export const GitHubLogo = styled(GitHub)`
   transition: background-color var(--animation);
   
   &.active,
-  &:hover {
-    background-color: #d1d1d1;
+  &:hover,
+  &:focus {
+    background-color: #ffffff;
   }
 `;

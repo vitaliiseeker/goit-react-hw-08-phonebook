@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from "react-redux";
 import PropTypes from 'prop-types';
+import { selectIsLoggedIn } from 'redux/auth/authSelectors';
 import { register, login } from 'redux/auth/authOperations';
 import { nanoid } from "nanoid";
 import { Button } from 'components/Button/Button';
@@ -17,6 +18,7 @@ export const AuthForm = ({ type }) => {
   const [isLoginForm, setIsLoginForm] =
     useState(type === "register" ? false : true);
 
+  const isLoggedIn = useSelector(selectIsLoggedIn);
   const dispatch = useDispatch();
 
   const nameInputId = nanoid();
@@ -52,7 +54,10 @@ export const AuthForm = ({ type }) => {
         register({ name, email, password })
     );
 
-    // Notify.success(`Welcome ${name}, you have successfully authenticated.`);
+    if (isLoggedIn) {
+      Notify.success(`Welcome ${name}, you have successfully ${isLoginForm ? "authorizated" : "registered"}.`);
+    };
+
     resetForm();
   };
 

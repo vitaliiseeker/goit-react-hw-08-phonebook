@@ -10,7 +10,7 @@ export const Footer = () => {
         <TextFooter>
           &copy; 2022 ⚡️ All Rights Reserved
           <LinkGitHub
-            href="https://github.com/vitaliiseeker/goit-react-hw-08-Contacts/"
+            href="https://github.com/vitaliiseeker/goit-react-hw-08-phonebook/"
             target="_blank"
             rel="noopener nofollow noreferrer">
             <GitHubLogo width="25" height="25" />

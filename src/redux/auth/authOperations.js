@@ -60,7 +60,6 @@ export const fetchCurrentUser = createAsyncThunk(
     token.set(tokenLS);
     try {
       const { data } = await axios('/users/current');
-      console.log();
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
